@@ -13,7 +13,7 @@ const getCommentById = async (id) => {
 
 const getCommentByPostId = async (id) => {
   const response = await axios.get(`${BaseApiUrl}/comments/post/${id}`);
-  return response.data;
+  return response.data.docs;
 };
 
 const deleteComment = async ({ id }) => {

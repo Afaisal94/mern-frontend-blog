@@ -7,7 +7,7 @@ function Comment(props) {
   const queryClient = useQueryClient();
   const [comment, setComment] = useState("");
 
-  const { isLoading, isError, data, error } = useQuery({
+  const { data: comments } = useQuery({
     queryKey: ["comments", post],
     queryFn: async () => await getCommentByPostId(post),
   });
@@ -52,7 +52,7 @@ function Comment(props) {
             </form>
 
             {/* Comment List */}
-            {data?.map((c) => {
+            {comments?.map((c) => {
               return (
                 <div className="d-flex mb-3" key={c._id} style={{backgroundColor:'white', borderRadius: '5px'}}>
                   <div className="flex-shrink-0">
