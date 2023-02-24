@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCategories } from "../../../hooks/useCategory";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -47,14 +49,16 @@ function Sidebar() {
           <div className="row">
             <div className="col-sm-6">
               <ul className="list-unstyled mb-0">
+                {isLoading ? <Skeleton count={5} /> : null}
+
                 {!isLoading ? (
                   <>
                     {data.docs.map((category) => (
                       <li key={category._id}>
                         <Link to={`/category/${category.name}`}>
-                        <span className="badge bg-primary">
-                          {category.name}
-                        </span>
+                          <span className="badge bg-primary">
+                            {category.name}
+                          </span>
                         </Link>
                       </li>
                     ))}

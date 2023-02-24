@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { getPostsInfinite } from "../../../hooks/usePost";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export const Home = () => {
   let maxPage = 5;
@@ -33,9 +35,19 @@ export const Home = () => {
           <div className="row">
             <div className="col-lg-7">
               {isLoading ? (
-                <center>
-                  <h3>Loading ...</h3>
-                </center>
+                <Fragment>
+                  <div className="card mb-4">
+                    <Skeleton height={300} />
+                    <div className="card-body">
+                      <h2 className="card-title">
+                        <Skeleton />
+                      </h2>
+                      <p className="card-text">
+                        <Skeleton count={5} />
+                      </p>
+                    </div>
+                  </div>
+                </Fragment>
               ) : null}
 
               {!isLoading && data?.pages[0].totalDocs < 1 ? (
