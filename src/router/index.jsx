@@ -6,7 +6,8 @@ import {
   Dashboard, 
   ListCategory, CreateCategory, EditCategory, 
   ListPost, CreatePost, EditPost, GeneratePost, 
-  ListComment  
+  ListComment,  
+  NotFound
 } from "../pages";
 
 export const Router = () => {
@@ -35,6 +36,7 @@ export const Router = () => {
           <Route path="/comment" element={<ListComment />} />
           {/* Login */}
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

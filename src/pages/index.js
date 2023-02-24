@@ -21,11 +21,14 @@ import { CreatePost } from "./admin/post/createPost";
 import { EditPost } from "./admin/post/editPost";
 import { GeneratePost } from "./admin/post/generatePost";
 
+import NotFound from "./notfound";
+
 export { 
     Home, SinglePage, Search, Category,
     Login, 
     Dashboard, 
     ListCategory, CreateCategory, EditCategory,
     ListComment,
-    ListPost, CreatePost, EditPost, GeneratePost
+    ListPost, CreatePost, EditPost, GeneratePost,
+    NotFound
 };
